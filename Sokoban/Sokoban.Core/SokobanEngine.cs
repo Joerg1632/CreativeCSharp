@@ -12,65 +12,38 @@ public class SokobanEngine
     public void MovePlayer(Direction dir)
     {
         var (px, py) = CurrentLevel.PlayerPosition;
-        var nx = px;
-        var ny = py;
+        var (nx, ny) = GetNextPosition(px, py, dir);
 
-        switch (dir)
-        {
-            case Direction.Up: ny--; 
-                break;
-            case Direction.Down: ny++;
-                break;
-            case Direction.Left: nx--; 
-                break;
-            case Direction.Right: nx++; 
-                break;
-        }
-
-        if (ny < 0 || ny >= CurrentLevel.Height || nx < 0 || nx >= CurrentLevel.Width)
+        if (!IsInsideBounds(nx, ny)) 
             return;
 
         var targetTile = CurrentLevel.Map[ny, nx];
-        if (targetTile == TileType.Wall) 
+
+        if (targetTile == TileType.Wall)
             return;
 
         if (targetTile == TileType.Box)
         {
-            int bx = nx, by = ny;
-            switch (dir)
-            {
-                case Direction.Up: by--; 
-                    break;
-                case Direction.Down: by++; 
-                    break;
-                case Direction.Left: bx--; 
-                    break;
-                case Direction.Right: bx++; 
-                    break;
-            }
-
-            if (by < 0 || by >= CurrentLevel.Height || bx < 0 || bx >= CurrentLevel.Width)
+            var (bx, by) = GetNextPosition(nx, ny, dir);
+            if (!IsInsideBounds(bx, by))
                 return;
 
             var nextTile = CurrentLevel.Map[by, bx];
             if (nextTile == TileType.Empty || nextTile == TileType.Goal)
             {
-                CurrentLevel.Map[by, bx] = TileType.Box;
-                CurrentLevel.Map[ny, nx] = TileType.Player;
-                CurrentLevel.Map[py, px] = TileType.Empty;
-                CurrentLevel.PlayerPosition = (nx, ny);
+                MoveTile(nx, ny, bx, by, TileType.Box);
+                MovePlayerTo(nx, ny, px, py);
             }
+            
             return;
         }
 
         if (targetTile == TileType.Empty || targetTile == TileType.Goal)
         {
-            CurrentLevel.Map[ny, nx] = TileType.Player;
-            CurrentLevel.Map[py, px] = TileType.Empty;
-            CurrentLevel.PlayerPosition = (nx, ny);
+            MovePlayerTo(nx, ny, px, py);
         }
     }
-    
+
     public bool IsLevelCompleted()
     {
         for (var y = 0; y < CurrentLevel.Height; y++)
@@ -84,8 +57,31 @@ public class SokobanEngine
         return true;
     }
 
-    private bool IsGoal(int x, int y)
+    private (int x, int y) GetNextPosition(int x, int y, Direction dir) => dir switch
     {
-        return CurrentLevel.Map[y, x] == TileType.Goal;
+        Direction.Up => (x, y - 1),
+        Direction.Down => (x, y + 1),
+        Direction.Left => (x - 1, y),
+        Direction.Right => (x + 1, y),
+        _ => (x, y)
+    };
+
+    private bool IsInsideBounds(int x, int y)
+    {
+        return x >= 0 && x < CurrentLevel.Width && y >= 0 && y < CurrentLevel.Height;
+    }
+        
+
+    private void MovePlayerTo(int nx, int ny, int px, int py)
+    {
+        CurrentLevel.Map[ny, nx] = TileType.Player;
+        CurrentLevel.Map[py, px] = CurrentLevel.Goals[py, px] == TileType.Goal ? TileType.Goal : TileType.Empty;
+        CurrentLevel.PlayerPosition = (nx, ny);
+    }
+
+    private void MoveTile(int fromX, int fromY, int toX, int toY, TileType tileType)
+    {
+        CurrentLevel.Map[toY, toX] = tileType;
+        CurrentLevel.Map[fromY, fromX] = CurrentLevel.Goals[fromY, fromX] == TileType.Goal ? TileType.Goal : TileType.Empty;
     }
 }

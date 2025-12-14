@@ -5,8 +5,42 @@
   <Config />
   <SourceFiles>
     <File>D:/JetBrains Rider 2025.2.3/RiderProjects/Sokoban/Sokoban.Game/Content/DefaultFont.xnb</File>
+    <File>D:/JetBrains Rider 2025.2.3/RiderProjects/Sokoban/Sokoban.Game/Content/floor.png</File>
+    <File>D:/JetBrains Rider 2025.2.3/RiderProjects/Sokoban/Sokoban.Game/Content/wall.png</File>
+    <File>D:/JetBrains Rider 2025.2.3/RiderProjects/Sokoban/Sokoban.Game/Content/box.png</File>
+    <File>D:/JetBrains Rider 2025.2.3/RiderProjects/Sokoban/Sokoban.Game/Content/goal.png</File>
+    <File>D:/JetBrains Rider 2025.2.3/RiderProjects/Sokoban/Sokoban.Game/Content/box_on_goal.png</File>
+    <File>D:/JetBrains Rider 2025.2.3/RiderProjects/Sokoban/Sokoban.Game/Content/Player/down_1.png</File>
+    <File>D:/JetBrains Rider 2025.2.3/RiderProjects/Sokoban/Sokoban.Game/Content/Player/down_2.png</File>
+    <File>D:/JetBrains Rider 2025.2.3/RiderProjects/Sokoban/Sokoban.Game/Content/Player/down_3.png</File>
+    <File>D:/JetBrains Rider 2025.2.3/RiderProjects/Sokoban/Sokoban.Game/Content/Player/left_1.png</File>
+    <File>D:/JetBrains Rider 2025.2.3/RiderProjects/Sokoban/Sokoban.Game/Content/Player/left_2.png</File>
+    <File>D:/JetBrains Rider 2025.2.3/RiderProjects/Sokoban/Sokoban.Game/Content/Player/left_3.png</File>
+    <File>D:/JetBrains Rider 2025.2.3/RiderProjects/Sokoban/Sokoban.Game/Content/Player/right_1.png</File>
+    <File>D:/JetBrains Rider 2025.2.3/RiderProjects/Sokoban/Sokoban.Game/Content/Player/right_2.png</File>
+    <File>D:/JetBrains Rider 2025.2.3/RiderProjects/Sokoban/Sokoban.Game/Content/Player/right_3.png</File>
+    <File>D:/JetBrains Rider 2025.2.3/RiderProjects/Sokoban/Sokoban.Game/Content/Player/up_1.png</File>
+    <File>D:/JetBrains Rider 2025.2.3/RiderProjects/Sokoban/Sokoban.Game/Content/Player/up_2.png</File>
+    <File>D:/JetBrains Rider 2025.2.3/RiderProjects/Sokoban/Sokoban.Game/Content/Player/up_3.png</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
   </DestFiles>
 </SourceFileCollection>

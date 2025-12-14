@@ -2,38 +2,43 @@ namespace Sokoban.Core;
 
 public static class LevelLoader
 {
+    private static readonly Dictionary<char, TileType> TileMapping = new()
+    {
+        ['#'] = TileType.Wall,
+        ['$'] = TileType.Box,
+        ['.'] = TileType.Goal,
+        ['@'] = TileType.Player
+    };
+
     public static Level LoadFromFile(string path)
     {
         var lines = File.ReadAllLines(path);
         var height = lines.Length;
         var width = lines[0].Length;
-        TileType[,] map = new TileType[height, width];
-        (int X, int Y) playerPos = (0,0);
+
+        var map = new TileType[height, width];
+        (int X, int Y) playerPos = (0, 0);
 
         for (var y = 0; y < height; y++)
         {
             for (var x = 0; x < width; x++)
             {
-                switch (lines[y][x])
-                {
-                    case '#': map[y, x] = TileType.Wall; 
-                        break;
-                    case '$': map[y, x] = TileType.Box; 
-                        break;
-                    case '.': map[y, x] = TileType.Goal; 
-                        break;
-                    case '@':
-                        map[y, x] = TileType.Player;
-                        playerPos = (x, y);
-                        break;
-                    default: map[y, x] = TileType.Empty; 
-                        break;
-                }
+                var c = lines[y][x];
+
+                if (!TileMapping.TryGetValue(c, out var tile))
+                    tile = TileType.Empty;
+
+                map[y, x] = tile;
+
+                if (tile == TileType.Player)
+                    playerPos = (x, y);
             }
         }
 
-        var level = new Level(map);
-        level.PlayerPosition = playerPos;
+        var level = new Level(map)
+        {
+            PlayerPosition = playerPos
+        };
         return level;
     }
 }

@@ -1,0 +1,39 @@
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+
+namespace Sokoban.Game;
+
+public class AnimatedSprite
+{
+    public Texture2D[] Frames { get; private set; }
+    public int CurrentFrameIndex { get; private set; }
+    public float FrameTime { get; private set; }
+    private float timer;
+
+    public AnimatedSprite(Texture2D[] frames, float frameTime = 0.15f)
+    {
+        Frames = frames;
+        FrameTime = frameTime;
+        CurrentFrameIndex = 0;
+        timer = 0f;
+    }
+
+    public void Update(GameTime gameTime, bool isMoving)
+    {
+        if (!isMoving)
+        {
+            CurrentFrameIndex = 0;
+            timer = 0f;
+            return;
+        }
+
+        timer += (float)gameTime.ElapsedGameTime.TotalSeconds;
+        if (timer >= FrameTime)
+        {
+            CurrentFrameIndex = (CurrentFrameIndex + 1) % Frames.Length;
+            timer = 0f;
+        }
+    }
+
+    public Texture2D CurrentFrame => Frames[CurrentFrameIndex];
+}

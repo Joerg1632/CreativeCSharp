@@ -6,5 +6,6 @@ public enum TileType
     Wall,
     Box,
     Goal,
-    Player
+    Player,
+    BoxOnGoal
 }

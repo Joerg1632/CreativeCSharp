@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <SourceFile>D:/JetBrains Rider 2025.2.3/RiderProjects/Sokoban/Sokoban.Game/Content/Player/down_3.png</SourceFile>
+  <SourceTime>2017-01-24T23:52:15.4324525+07:00</SourceTime>
+  <DestFile>D:/JetBrains Rider 2025.2.3/RiderProjects/Sokoban/Sokoban.Game/Content/bin/DesktopGL/Player/down_3.xnb</DestFile>
+  <DestTime>2025-12-14T23:49:39.0076466+07:00</DestTime>
+  <Importer>TextureImporter</Importer>
+  <ImporterTime>2025-10-20T21:25:32+07:00</ImporterTime>
+  <Processor>TextureProcessor</Processor>
+  <ProcessorTime>2025-10-20T21:25:32+07:00</ProcessorTime>
+  <Dependencies />
+  <BuildAsset />
+  <BuildOutput />
+</PipelineBuildEvent>

@@ -1,2 +1,2 @@
 Source File,Dest File,Processor Type,Content Type,Source File Size,Dest File Size,Build Seconds
-"D:/JetBrains Rider 2025.2.3/RiderProjects/Sokoban/Sokoban.Game/Content/DefaultFont.xnb","D:/JetBrains Rider 2025.2.3/RiderProjects/Sokoban/Sokoban.Game/Content/bin/DesktopGL/DefaultFont.xnb","FontDescriptionProcessor","SpriteFontContent",488,70681,0,2270318
+"D:/JetBrains Rider 2025.2.3/RiderProjects/Sokoban/Sokoban.Game/Content/box_on_goal.png","D:/JetBrains Rider 2025.2.3/RiderProjects/Sokoban/Sokoban.Game/Content/bin/DesktopGL/box_on_goal.xnb","TextureProcessor","Texture2DContent",1990,65621,0,0912519

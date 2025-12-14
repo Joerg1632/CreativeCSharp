@@ -13,13 +13,27 @@ public class Level
         Map = new TileType[map.GetLength(0), map.GetLength(1)];
         Goals = new TileType[map.GetLength(0), map.GetLength(1)];
 
-        for (var y = 0; y < map.GetLength(0); y++)
+        for (int y = 0; y < map.GetLength(0); y++)
         {
-            for (var x = 0; x < map.GetLength(1); x++)
+            for (int x = 0; x < map.GetLength(1); x++)
             {
                 Map[y, x] = map[y, x];
-                Goals[y, x] = map[y, x] == TileType.Goal ? TileType.Goal : TileType.Empty;
+                Goals[y, x] = IsGoalTile(map[y, x]) ? TileType.Goal : TileType.Empty;
             }
         }
     }
+    
+    public Level Clone()
+    {
+        var newMap = new TileType[Height, Width];
+        Array.Copy(Map, newMap, Map.Length);
+
+        var clone = new Level(newMap)
+        {
+            PlayerPosition = this.PlayerPosition
+        };
+        return clone;
+    }
+    
+    private static bool IsGoalTile(TileType tile) => tile == TileType.Goal;
 }

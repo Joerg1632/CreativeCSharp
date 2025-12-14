@@ -16,3 +16,88 @@
 /processor:FontDescriptionProcessor
 /processorParam:PremultiplyAlpha=True
 /build:DefaultFont.xnb
+
+#begin floor.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/build:floor.png
+
+#begin wall.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/build:wall.png
+
+#begin box.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/build:box.png
+
+#begin goal.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/build:goal.png
+
+#begin box_on_goal.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/build:box_on_goal.png
+
+#begin Player/down_1.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/build:Player/down_1.png
+
+#begin Player/down_2.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/build:Player/down_2.png
+
+#begin Player/down_3.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/build:Player/down_3.png
+
+#begin Player/left_1.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/build:Player/left_1.png
+
+#begin Player/left_2.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/build:Player/left_2.png
+
+#begin Player/left_3.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/build:Player/left_3.png
+
+#begin Player/right_1.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/build:Player/right_1.png
+
+#begin Player/right_2.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/build:Player/right_2.png
+
+#begin Player/right_3.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/build:Player/right_3.png
+
+#begin Player/up_1.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/build:Player/up_1.png
+
+#begin Player/up_2.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/build:Player/up_2.png
+
+#begin Player/up_3.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/build:Player/up_3.png
