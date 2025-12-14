@@ -1,0 +1,16 @@
+D:\JetBrains Rider 2025.2.3\RiderProjects\Sokoban\Sokoban.Render\bin\Debug\net9.0\Sokoban.Render.deps.json
+D:\JetBrains Rider 2025.2.3\RiderProjects\Sokoban\Sokoban.Render\bin\Debug\net9.0\Sokoban.Render.dll
+D:\JetBrains Rider 2025.2.3\RiderProjects\Sokoban\Sokoban.Render\bin\Debug\net9.0\Sokoban.Render.pdb
+D:\JetBrains Rider 2025.2.3\RiderProjects\Sokoban\Sokoban.Render\bin\Debug\net9.0\Sokoban.Core.dll
+D:\JetBrains Rider 2025.2.3\RiderProjects\Sokoban\Sokoban.Render\bin\Debug\net9.0\Sokoban.Core.pdb
+D:\JetBrains Rider 2025.2.3\RiderProjects\Sokoban\Sokoban.Render\obj\Debug\net9.0\Sokoban.Render.csproj.AssemblyReference.cache
+D:\JetBrains Rider 2025.2.3\RiderProjects\Sokoban\Sokoban.Render\obj\Debug\net9.0\Sokoban.Render.GeneratedMSBuildEditorConfig.editorconfig
+D:\JetBrains Rider 2025.2.3\RiderProjects\Sokoban\Sokoban.Render\obj\Debug\net9.0\Sokoban.Render.AssemblyInfoInputs.cache
+D:\JetBrains Rider 2025.2.3\RiderProjects\Sokoban\Sokoban.Render\obj\Debug\net9.0\Sokoban.Render.AssemblyInfo.cs
+D:\JetBrains Rider 2025.2.3\RiderProjects\Sokoban\Sokoban.Render\obj\Debug\net9.0\Sokoban.Render.csproj.CoreCompileInputs.cache
+D:\JetBrains Rider 2025.2.3\RiderProjects\Sokoban\Sokoban.Render\obj\Debug\net9.0\Sokoban.Render.sourcelink.json
+D:\JetBrains Rider 2025.2.3\RiderProjects\Sokoban\Sokoban.Render\obj\Debug\net9.0\Sokoban..933055F3.Up2Date
+D:\JetBrains Rider 2025.2.3\RiderProjects\Sokoban\Sokoban.Render\obj\Debug\net9.0\Sokoban.Render.dll
+D:\JetBrains Rider 2025.2.3\RiderProjects\Sokoban\Sokoban.Render\obj\Debug\net9.0\refint\Sokoban.Render.dll
+D:\JetBrains Rider 2025.2.3\RiderProjects\Sokoban\Sokoban.Render\obj\Debug\net9.0\Sokoban.Render.pdb
+D:\JetBrains Rider 2025.2.3\RiderProjects\Sokoban\Sokoban.Render\obj\Debug\net9.0\ref\Sokoban.Render.dll

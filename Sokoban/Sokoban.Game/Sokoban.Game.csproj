@@ -28,5 +28,6 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Sokoban.Core\Sokoban.Core.csproj" />
+    <ProjectReference Include="..\Sokoban.Render\Sokoban.Render.csproj" />
   </ItemGroup>
 </Project>

@@ -53,3 +53,5 @@ D:\JetBrains Rider 2025.2.3\RiderProjects\Sokoban\Sokoban.Game\bin\Debug\net9.0\
 D:\JetBrains Rider 2025.2.3\RiderProjects\Sokoban\Sokoban.Game\bin\Debug\net9.0\Content\Player\up_2.xnb
 D:\JetBrains Rider 2025.2.3\RiderProjects\Sokoban\Sokoban.Game\bin\Debug\net9.0\Content\Player\up_3.xnb
 D:\JetBrains Rider 2025.2.3\RiderProjects\Sokoban\Sokoban.Game\bin\Debug\net9.0\Content\box_on_goal.xnb
+D:\JetBrains Rider 2025.2.3\RiderProjects\Sokoban\Sokoban.Game\bin\Debug\net9.0\Sokoban.Render.dll
+D:\JetBrains Rider 2025.2.3\RiderProjects\Sokoban\Sokoban.Game\bin\Debug\net9.0\Sokoban.Render.pdb

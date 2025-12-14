@@ -140,6 +140,20 @@
         "runtime": {
           "bin/placeholder/Sokoban.Core.dll": {}
         }
+      },
+      "Sokoban.Render/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v9.0",
+        "dependencies": {
+          "MonoGame.Framework.DesktopGL": "3.8.0",
+          "Sokoban.Core": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/Sokoban.Render.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Sokoban.Render.dll": {}
+        }
       }
     }
   },
@@ -301,13 +315,19 @@
       "type": "project",
       "path": "../Sokoban.Core/Sokoban.Core.csproj",
       "msbuildProject": "../Sokoban.Core/Sokoban.Core.csproj"
+    },
+    "Sokoban.Render/1.0.0": {
+      "type": "project",
+      "path": "../Sokoban.Render/Sokoban.Render.csproj",
+      "msbuildProject": "../Sokoban.Render/Sokoban.Render.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net9.0": [
       "MonoGame.Content.Builder.Task >= 3.8.*",
       "MonoGame.Framework.DesktopGL >= 3.8.*",
-      "Sokoban.Core >= 1.0.0"
+      "Sokoban.Core >= 1.0.0",
+      "Sokoban.Render >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -337,6 +357,9 @@
           "projectReferences": {
             "D:\\JetBrains Rider 2025.2.3\\RiderProjects\\Sokoban\\Sokoban.Core\\Sokoban.Core.csproj": {
               "projectPath": "D:\\JetBrains Rider 2025.2.3\\RiderProjects\\Sokoban\\Sokoban.Core\\Sokoban.Core.csproj"
+            },
+            "D:\\JetBrains Rider 2025.2.3\\RiderProjects\\Sokoban\\Sokoban.Render\\Sokoban.Render.csproj": {
+              "projectPath": "D:\\JetBrains Rider 2025.2.3\\RiderProjects\\Sokoban\\Sokoban.Render\\Sokoban.Render.csproj"
             }
           }
         }
