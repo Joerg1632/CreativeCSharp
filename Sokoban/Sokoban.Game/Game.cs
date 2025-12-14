@@ -105,9 +105,10 @@ public class Game : Microsoft.Xna.Framework.Game
 
     private int CalculateTileSize()
     {
-        int screenWidth = GraphicsDevice.Adapter.CurrentDisplayMode.Width - ScreenPadding;
-        int screenHeight = GraphicsDevice.Adapter.CurrentDisplayMode.Height - ScreenPadding;
-        int size = System.Math.Min(screenWidth / CurrentLevel.Width, screenHeight / CurrentLevel.Height);
+        var screenWidth = GraphicsDevice.Adapter.CurrentDisplayMode.Width - ScreenPadding;
+        var screenHeight = GraphicsDevice.Adapter.CurrentDisplayMode.Height - ScreenPadding;
+        var size = System.Math.Min(screenWidth / CurrentLevel.Width, screenHeight / CurrentLevel.Height);
+        
         return System.Math.Min(size, MaxTileSize);
     }
 
@@ -167,4 +168,3 @@ public class Game : Microsoft.Xna.Framework.Game
         base.Draw(gameTime);
     }
 }
-

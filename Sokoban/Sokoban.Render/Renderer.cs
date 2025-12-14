@@ -8,6 +8,7 @@ using Sokoban.Render;
 namespace Sokoban.Render;
 public class Renderer
 {
+    private const string victoryText = "VICTORY!";
     public SpriteBatch SpriteBatch { get; }
     public Dictionary<TileType, Texture2D> TileTextures { get; }
     public Dictionary<Direction, AnimatedSprite> PlayerAnimations { get; }
@@ -80,9 +81,9 @@ public class Renderer
 
     public void DrawVictoryText(bool levelCompleted)
     {
-        if (!levelCompleted) return;
+        if (!levelCompleted) 
+            return;
 
-        const string victoryText = "VICTORY!";
         var size = Font.MeasureString(victoryText);
         var position = new Vector2((SpriteBatch.GraphicsDevice.PresentationParameters.BackBufferWidth - size.X) / 2,
                                    (SpriteBatch.GraphicsDevice.PresentationParameters.BackBufferHeight - size.Y) / 2);
