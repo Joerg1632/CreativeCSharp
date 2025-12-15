@@ -23,17 +23,5 @@ public class Level
         }
     }
     
-    public Level Clone()
-    {
-        var newMap = new TileType[Height, Width];
-        Array.Copy(Map, newMap, Map.Length);
-
-        var clone = new Level(newMap)
-        {
-            PlayerPosition = this.PlayerPosition
-        };
-        return clone;
-    }
-    
     private static bool IsGoalTile(TileType tile) => tile == TileType.Goal;
 }

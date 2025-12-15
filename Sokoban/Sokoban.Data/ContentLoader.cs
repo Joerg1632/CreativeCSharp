@@ -8,22 +8,22 @@ namespace Sokoban.Data;
 
 public class ContentLoader
 {
-    private ContentManager content;
+    private ContentManager Content;
 
-    public ContentLoader(ContentManager content)
+    public ContentLoader(ContentManager Content)
     {
-        this.content = content;
+        this.Content = Content;
     }
 
     public Dictionary<TileType, Texture2D> LoadTileTextures()
     {
         return new Dictionary<TileType, Texture2D>
         {
-            { TileType.Empty, content.Load<Texture2D>("floor") },
-            { TileType.Wall, content.Load<Texture2D>("wall") },
-            { TileType.Box, content.Load<Texture2D>("box") },
-            { TileType.Goal, content.Load<Texture2D>("goal") },
-            { TileType.BoxOnGoal, content.Load<Texture2D>("box_on_goal") }
+            { TileType.Empty, Content.Load<Texture2D>("floor") },
+            { TileType.Wall, Content.Load<Texture2D>("wall") },
+            { TileType.Box, Content.Load<Texture2D>("box") },
+            { TileType.Goal, Content.Load<Texture2D>("goal") },
+            { TileType.BoxOnGoal, Content.Load<Texture2D>("box_on_goal") }
         };
     }
 
@@ -42,11 +42,11 @@ public class ContentLoader
     {
         return new AnimatedSprite(new[]
         {
-            content.Load<Texture2D>($"{path}_1"),
-            content.Load<Texture2D>($"{path}_2"),
-            content.Load<Texture2D>($"{path}_3")
+            Content.Load<Texture2D>($"{path}_1"),
+            Content.Load<Texture2D>($"{path}_2"),
+            Content.Load<Texture2D>($"{path}_3")
         });
     }
 
-    public SpriteFont LoadFont(string name) => content.Load<SpriteFont>(name);
+    public SpriteFont LoadFont(string name) => Content.Load<SpriteFont>(name);
 }

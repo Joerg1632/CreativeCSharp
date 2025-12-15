@@ -1,15 +1,15 @@
 {
   "easy": {
     "LevelId": "easy",
-    "PlayerName": "fds",
+    "PlayerName": "dsf",
     "Steps": 9,
-    "TimeSeconds": 3.8666663
+    "TimeSeconds": 3.5833333
   },
   "middle": {
     "LevelId": "middle",
-    "PlayerName": "eqw",
+    "PlayerName": "sdf",
     "Steps": 57,
-    "TimeSeconds": 29.283062
+    "TimeSeconds": 28.283077
   },
   "hard": {
     "LevelId": "hard",

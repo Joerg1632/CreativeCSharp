@@ -5,8 +5,6 @@ using Sokoban.Core;
 using Sokoban.Render;
 using Sokoban.Data;
 using System.Collections.Generic;
-using System.IO;
-using System.Linq;
 
 namespace Sokoban.Game
 {
@@ -18,27 +16,28 @@ namespace Sokoban.Game
 
         private GraphicsDeviceManager Graphics;
         private SpriteBatch SpriteBatch;
-        private KeyboardState PreviousKeyboardState;
-        private MouseState prevMouse;
-        private float levelTime;
 
-        private Renderer renderer;
-        private Direction lastDirection = Direction.Down;
-        private bool isMoving;
-        private GameState gameState = GameState.StartScreen;
-        private string inputName = "";
-        private string CurrentLevelPath;
+        private MouseState PrevMouse;
+        private float LevelTime;
 
-        private readonly List<LevelInfo> Levels = new()
-        {
-            new LevelInfo { Id = "easy", Name = "Easy", Path = @"Content\levels\easy.txt" },
-            new LevelInfo { Id = "middle", Name = "Middle", Path = @"Content\levels\middle.txt" },
-            new LevelInfo { Id = "hard", Name = "Hard", Path = @"Content\levels\hard.txt" }
-        };
+        private Renderer Renderer;
+        private LevelRenderer LevelRenderer;
+        private UiRenderer UiRenderer;
+        private LevelSelectionRenderer LevelSelectionRenderer;
 
-        private ContentLoader contentLoader;
-        private PlayerService playerService;
-        private RecordService recordService;
+        private InputManager InputManager = new();
+        private LevelManager LevelManager;
+        private PlayerService PlayerService;
+        private RecordService RecordService;
+
+        private GameState GameState = GameState.StartScreen;
+        private string InputName = "";
+        private LevelInfo SelectedLevel;
+
+        private Direction LastDirection = Direction.Down;
+        private bool IsMoving;
+
+        private List<LevelInfo> Levels;
 
         public Level CurrentLevel { get; private set; }
         public SokobanEngine Engine { get; private set; }
@@ -49,6 +48,7 @@ namespace Sokoban.Game
             Graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
             IsMouseVisible = true;
+
             Graphics.PreferredBackBufferWidth = MenuWidth;
             Graphics.PreferredBackBufferHeight = MenuHeight;
         }
@@ -57,150 +57,160 @@ namespace Sokoban.Game
         {
             SpriteBatch = new SpriteBatch(GraphicsDevice);
 
-            contentLoader = new ContentLoader(Content);
-            playerService = new PlayerService();
-            recordService = new RecordService();
+            PlayerService = new PlayerService();
+            RecordService = new RecordService();
+            LevelManager = new LevelManager(PlayerService, RecordService);
 
+            Levels = LevelManager.GetLevels();
+
+            var contentLoader = new ContentLoader(Content);
             var tileTextures = contentLoader.LoadTileTextures();
             var playerAnimations = contentLoader.LoadPlayerAnimations();
-            var defaultFont = contentLoader.LoadFont("DefaultFont");
+            var font = contentLoader.LoadFont("DefaultFont");
             var smallFont = contentLoader.LoadFont("SmallFont");
 
-            renderer = new Renderer(SpriteBatch, tileTextures, playerAnimations, defaultFont, smallFont)
+            Renderer = new Renderer(SpriteBatch, font, smallFont)
             {
                 TileSize = MaxTileSize,
                 OffsetX = 0,
                 OffsetY = 0
             };
 
-            renderer.GenerateLevelThumbnails(Levels, 120, 120);
+            LevelRenderer = new LevelRenderer(Renderer, tileTextures, playerAnimations);
+            UiRenderer = new UiRenderer(Renderer);
+            LevelSelectionRenderer = new LevelSelectionRenderer(Renderer);
+
+            const int thumbnailSize = 120;
+            LevelSelectionRenderer.GenerateLevelThumbnails(Levels, tileTextures, thumbnailSize, thumbnailSize);
         }
 
         protected override void Update(GameTime gameTime)
         {
-            var state = Keyboard.GetState();
+            var keyboard = Keyboard.GetState();
+            var mouse = Mouse.GetState();
 
-            switch (gameState)
+            switch (GameState)
             {
                 case GameState.StartScreen:
-                    HandleNameInput(state);
+                    UpdateStartScreen(keyboard);
                     break;
-
                 case GameState.LevelSelection:
+                    UpdateLevelSelection(mouse);
                     break;
-
                 case GameState.Playing:
-                    levelTime += (float)gameTime.ElapsedGameTime.TotalSeconds;
-                    HandlePlayerInput(state, gameTime);
+                    UpdatePlaying(gameTime, keyboard);
                     break;
-
                 case GameState.Victory:
-                    if (state.IsKeyDown(Keys.Escape) && !PreviousKeyboardState.IsKeyDown(Keys.Escape))
-                        GoToMenu();
-
-                    if (state.IsKeyDown(Keys.R) && !PreviousKeyboardState.IsKeyDown(Keys.R)
-                        && !string.IsNullOrEmpty(CurrentLevelPath))
-                        LoadLevel(CurrentLevelPath);
+                    UpdateVictory(keyboard);
                     break;
             }
 
-            PreviousKeyboardState = state;
+            InputManager.Update(keyboard);
             base.Update(gameTime);
         }
 
-        private void HandleNameInput(KeyboardState state)
+        protected override void Draw(GameTime gameTime)
         {
-            foreach (var key in state.GetPressedKeys())
+            GraphicsDevice.Clear(Color.CornflowerBlue);
+            SpriteBatch.Begin();
+
+            switch (GameState)
             {
-                if (PreviousKeyboardState.IsKeyUp(key))
-                {
-                    if (key == Keys.Back && inputName.Length > 0)
-                        inputName = inputName[..^1];
-                    else if (key == Keys.Enter && inputName.Length > 0)
-                    {
-                        playerService.Profile.PlayerName = inputName;
-                        playerService.Save();
-                        gameState = GameState.LevelSelection;
-                    }
-                    else
-                    {
-                        string s = KeyToChar(key, state.IsKeyDown(Keys.LeftShift) || state.IsKeyDown(Keys.RightShift));
-                        if (!string.IsNullOrEmpty(s) && inputName.Length < 12)
-                            inputName += s;
-                    }
-                }
+                case GameState.StartScreen:
+                    UiRenderer.DrawStartScreen(InputName);
+                    break;
+                case GameState.LevelSelection:
+                    LevelSelectionRenderer.DrawLevelSelection(
+                        Levels, 
+                        PlayerService.Profile, 
+                        RecordService.GetAll(),
+                        Mouse.GetState(), 
+                        PrevMouse);
+                    break;
+                case GameState.Playing:
+                    DrawPlaying();
+                    break;
+                case GameState.Victory:
+                    DrawPlaying();
+                    DrawVictoryScreen();
+                    break;
+            }
+
+            SpriteBatch.End();
+            base.Draw(gameTime);
+        }
+
+        private void UpdateStartScreen(KeyboardState keyboard)
+        {
+            InputName = InputManager.HandleNameInput(keyboard, InputName);
+            if (keyboard.IsKeyDown(Keys.Enter) && InputName.Length > 0)
+            {
+                PlayerService.Profile.PlayerName = InputName;
+                PlayerService.Save();
+                GameState = GameState.LevelSelection;
             }
         }
 
-        private string KeyToChar(Keys key, bool shift)
+        private void UpdateLevelSelection(MouseState mouse)
         {
-            if (key >= Keys.A && key <= Keys.Z)
-                return shift ? key.ToString() : key.ToString().ToLower();
-            if (key >= Keys.D0 && key <= Keys.D9)
-                return ((char)('0' + (key - Keys.D0))).ToString();
-            if (key >= Keys.NumPad0 && key <= Keys.NumPad9)
-                return ((char)('0' + (key - Keys.NumPad0))).ToString();
-            if (key == Keys.Space)
-                return " ";
-            return "";
+            SelectedLevel = LevelSelectionRenderer.HandleSelection(Levels, mouse, PrevMouse);
+            if (SelectedLevel != null)
+                LoadLevel(SelectedLevel.Path);
+
+            PrevMouse = mouse;
+        }
+
+        private void UpdatePlaying(GameTime gameTime, KeyboardState keyboard)
+        {
+            LevelTime += (float)gameTime.ElapsedGameTime.TotalSeconds;
+            InputManager.HandlePlayerInput(keyboard, Engine, ref LastDirection, out IsMoving);
+
+            LevelRenderer.SetPlayerDirection(LastDirection);
+            LevelRenderer.UpdatePlayerAnimation(gameTime, IsMoving);
+
+            if (Engine.IsLevelCompleted())
+            {
+                LevelCompleted = true;
+                GameState = GameState.Victory;
+                LevelManager.SaveLevelResult(SelectedLevel.Path, Engine, LevelTime);
+            }
+        }
+
+        private void UpdateVictory(KeyboardState keyboard)
+        {
+            if (InputManager.IsKeyPressed(Keys.Escape, keyboard))
+                GoToMenu();
+            if (InputManager.IsKeyPressed(Keys.R, keyboard))
+                LoadLevel(SelectedLevel.Path);
+        }
+
+        private void DrawPlaying()
+        {
+            LevelRenderer.DrawLevel(CurrentLevel);
+            LevelRenderer.DrawPlayer(CurrentLevel);
+            UiRenderer.DrawHud(PlayerService.Profile.PlayerName, Engine.Steps, LevelTime);
+        }
+
+        private void DrawVictoryScreen()
+        {
+            var result = PlayerService.GetLevelStats(SelectedLevel.Id);
+            UiRenderer.DrawVictoryScreen(result, "R - Restart\nESC - Level Selection");
         }
 
         private void LoadLevel(string path)
         {
-            CurrentLevel = LevelLoader.LoadFromFile(path);
-            Engine = new SokobanEngine(CurrentLevel);
+            (Engine, CurrentLevel) = LevelManager.LoadLevel(path);
             LevelCompleted = false;
-            levelTime = 0f;
-            CurrentLevelPath = path;
+            LevelTime = 0f;
+
+            SelectedLevel = Levels.Find(l => l.Path == path);
 
             Graphics.PreferredBackBufferWidth = CurrentLevel.Width * MaxTileSize;
             Graphics.PreferredBackBufferHeight = CurrentLevel.Height * MaxTileSize;
             Graphics.ApplyChanges();
 
-            renderer.TileSize = MaxTileSize;
-            gameState = GameState.Playing;
-        }
-
-        private void HandlePlayerInput(KeyboardState state, GameTime gameTime)
-        {
-            isMoving = false;
-
-            if (state.IsKeyDown(Keys.Up))
-                MovePlayer(Direction.Up, Keys.Up);
-            else if (state.IsKeyDown(Keys.Down))
-                MovePlayer(Direction.Down, Keys.Down);
-            else if (state.IsKeyDown(Keys.Left))
-                MovePlayer(Direction.Left, Keys.Left);
-            else if (state.IsKeyDown(Keys.Right))
-                MovePlayer(Direction.Right, Keys.Right);
-
-            renderer.SetPlayerDirection(lastDirection);
-            renderer.UpdatePlayerAnimation(gameTime, isMoving);
-
-            if (Engine.IsLevelCompleted())
-            {
-                LevelCompleted = true;
-                gameState = GameState.Victory;
-                SaveLevelResult();
-            }
-        }
-
-        private void MovePlayer(Direction dir, Keys key)
-        {
-            lastDirection = dir;
-            isMoving = true;
-
-            if (!PreviousKeyboardState.IsKeyDown(key))
-                Engine.MovePlayer(dir);
-        }
-
-        private void SaveLevelResult()
-        {
-            var levelId = Path.GetFileNameWithoutExtension(CurrentLevelPath);
-
-            recordService.TryUpdateRecord(levelId, playerService.Profile.PlayerName, Engine.Steps, levelTime);
-
-            playerService.UpdateLevelStats(levelId, Engine.Steps, levelTime);
+            Renderer.TileSize = MaxTileSize;
+            GameState = GameState.Playing;
         }
 
         private void GoToMenu()
@@ -211,49 +221,8 @@ namespace Sokoban.Game
 
             CurrentLevel = null;
             Engine = null;
-            gameState = GameState.LevelSelection;
-        }
-
-        protected override void Draw(GameTime gameTime)
-        {
-            GraphicsDevice.Clear(Color.CornflowerBlue);
-            SpriteBatch.Begin();
-
-            switch (gameState)
-            {
-                case GameState.StartScreen:
-                    renderer.DrawStartScreen(inputName);
-                    break;
-
-                case GameState.LevelSelection:
-                    var mouse = Mouse.GetState();
-                    var selected = renderer.DrawLevelSelection(Levels, playerService.Profile, recordService.GetAll(), mouse, prevMouse);
-
-                    if (selected != null)
-                        LoadLevel(selected.Path);
-
-                    prevMouse = mouse;
-                    break;
-
-                case GameState.Playing:
-                    renderer.DrawLevel(CurrentLevel);
-                    renderer.DrawPlayer(CurrentLevel);
-                    renderer.DrawHud(playerService.Profile.PlayerName, Engine.Steps, levelTime);
-                    break;
-
-                case GameState.Victory:
-                    renderer.DrawLevel(CurrentLevel);
-                    renderer.DrawPlayer(CurrentLevel);
-                    renderer.DrawHud(playerService.Profile.PlayerName, Engine.Steps, levelTime);
-
-                    var levelId = Path.GetFileName(CurrentLevelPath);
-                    var result = playerService.GetLevelStats(levelId);
-                    renderer.DrawVictoryScreen(result, extraHint: "R - Restart\nESC - Level Selection");
-                    break;
-            }
-
-            SpriteBatch.End();
-            base.Draw(gameTime);
+            SelectedLevel = null;
+            GameState = GameState.LevelSelection;
         }
     }
 }

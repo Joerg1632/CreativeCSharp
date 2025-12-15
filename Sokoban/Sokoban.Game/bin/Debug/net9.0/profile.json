@@ -1,5 +1,5 @@
 {
-  "PlayerName": "  sdf",
+  "PlayerName": "dsf",
   "CompletedLevels": [
     {
       "Steps": 20,
@@ -32,18 +32,18 @@
       "LevelId": "easy.txt"
     },
     {
-      "Steps": 57,
-      "TimeSeconds": 29.283062,
-      "LevelId": "middle"
-    },
-    {
       "Steps": 143,
       "TimeSeconds": 77.31871,
       "LevelId": "hard"
     },
     {
+      "Steps": 57,
+      "TimeSeconds": 28.283077,
+      "LevelId": "middle"
+    },
+    {
       "Steps": 9,
-      "TimeSeconds": 6.500033,
+      "TimeSeconds": 4.1666684,
       "LevelId": "easy"
     }
   ],
