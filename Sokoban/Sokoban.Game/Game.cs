@@ -33,10 +33,8 @@ namespace Sokoban.Game
         private GameState GameState = GameState.StartScreen;
         private string InputName = "";
         private LevelInfo SelectedLevel;
-
         private Direction LastDirection = Direction.Down;
         private bool IsMoving;
-
         private List<LevelInfo> Levels;
 
         public Level CurrentLevel { get; private set; }
@@ -131,7 +129,6 @@ namespace Sokoban.Game
                     DrawPlaying();
                     break;
                 case GameState.Victory:
-                    DrawPlaying();
                     DrawVictoryScreen();
                     break;
             }
@@ -174,6 +171,12 @@ namespace Sokoban.Game
                 GameState = GameState.Victory;
                 LevelManager.SaveLevelResult(SelectedLevel.Path, Engine, LevelTime);
             }
+            
+            if (InputManager.IsKeyPressed(Keys.R, keyboard))
+                LoadLevel(SelectedLevel.Path);
+
+            if (InputManager.IsKeyPressed(Keys.Escape, keyboard))
+                GoToMenu();
         }
 
         private void UpdateVictory(KeyboardState keyboard)
@@ -193,10 +196,13 @@ namespace Sokoban.Game
 
         private void DrawVictoryScreen()
         {
-            var result = PlayerService.GetLevelStats(SelectedLevel.Id);
-            UiRenderer.DrawVictoryScreen(result, "R - Restart\nESC - Level Selection");
+            UiRenderer.DrawVictoryScreen(
+                Engine.Steps,     
+                LevelTime,
+                "\nR - Restart\nESC - Level Selection"
+            );
         }
-
+        
         private void LoadLevel(string path)
         {
             (Engine, CurrentLevel) = LevelManager.LoadLevel(path);

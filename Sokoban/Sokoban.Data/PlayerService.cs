@@ -13,13 +13,28 @@ public class PlayerService
 
     public void Save() => SaveService.Save(Profile);
 
-    public LevelStats GetLevelStats(string levelId) =>
-        Profile.CompletedLevels.FirstOrDefault(l => l.LevelId == levelId);
-
+    public LevelStats GetLevelStats(string levelId)
+    {
+        return Profile.CompletedLevels.FirstOrDefault(l => l.LevelId == levelId);
+    }
+    
     public void UpdateLevelStats(string levelId, int steps, float time)
     {
-        Profile.CompletedLevels.RemoveAll(l => l.LevelId == levelId);
-        Profile.CompletedLevels.Add(new LevelStats { LevelId = levelId, Steps = steps, TimeSeconds = time });
+        var existing = Profile.CompletedLevels.FirstOrDefault(l => l.LevelId == levelId);
+
+        if (existing == null)
+        {
+            Profile.CompletedLevels.Add(new LevelStats { LevelId = levelId, Steps = steps, TimeSeconds = time });
+        }
+        else
+        {
+            if (steps < existing.Steps || (steps == existing.Steps && time < existing.TimeSeconds))
+            {
+                existing.Steps = steps;
+                existing.TimeSeconds = time;
+            }
+        }
+
         Save();
     }
 }

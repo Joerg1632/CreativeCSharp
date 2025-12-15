@@ -38,6 +38,8 @@ public class ContentLoader
         };
     }
 
+    public SpriteFont LoadFont(string name) => Content.Load<SpriteFont>(name);
+    
     private AnimatedSprite LoadAnimation(string path)
     {
         return new AnimatedSprite(new[]
@@ -47,6 +49,4 @@ public class ContentLoader
             Content.Load<Texture2D>($"{path}_3")
         });
     }
-
-    public SpriteFont LoadFont(string name) => Content.Load<SpriteFont>(name);
 }

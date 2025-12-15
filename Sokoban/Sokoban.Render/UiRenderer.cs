@@ -10,7 +10,7 @@ public class UiRenderer
     private readonly Vector2 StartScreenTitlePos = new(400, 100);
     private readonly Vector2 StartScreenNamePos = new(400, 140);
     private readonly Vector2 StartScreenHintPos = new(400, 180);
-
+    private readonly Vector2 victoryKeysOffset = new Vector2(0, 150);
     private readonly Color StartScreenTitleColor = Color.White;
     private readonly Color StartScreenNameColor = Color.Yellow;
     private readonly Color StartScreenHintColor = Color.DarkSlateBlue;
@@ -58,15 +58,16 @@ public class UiRenderer
         }
     }
 
-    public void DrawVictoryScreen(LevelStats stats, string hint)
+    public void DrawVictoryScreen(int steps, float time, string hint)
     {
         var vp = Renderer.SpriteBatch.GraphicsDevice.Viewport;
         var center = new Vector2(vp.Width / 2f, vp.Height / 2f);
 
         Renderer.SpriteBatch.Draw(Renderer.GetPixel(), new Rectangle(0, 0, vp.Width, vp.Height), VictoryOverlayColor);
         Renderer.DrawCenteredText("LEVEL COMPLETED!", center + VictoryTitleOffset, VictoryTitleColor);
-        Renderer.DrawCenteredText($"Steps: {stats.Steps}", center + VictoryStepsOffset, VictoryTextColor);
-        Renderer.DrawCenteredText($"Time: {stats.TimeSeconds:F1}s", center + VictoryTimeOffset, VictoryTextColor);
+        Renderer.DrawCenteredText($"Steps: {steps}", center + VictoryStepsOffset, VictoryTextColor);
+        Renderer.DrawCenteredText($"Time: {time:F1}s", center + VictoryTimeOffset, VictoryTextColor);
         Renderer.DrawCenteredText(hint, center + VictoryHintOffset, VictoryHintColor);
     }
+
 }

@@ -1,9 +1,9 @@
 {
   "easy": {
     "LevelId": "easy",
-    "PlayerName": "dsf",
+    "PlayerName": "sdf",
     "Steps": 9,
-    "TimeSeconds": 3.5833333
+    "TimeSeconds": 3.1000004
   },
   "middle": {
     "LevelId": "middle",
