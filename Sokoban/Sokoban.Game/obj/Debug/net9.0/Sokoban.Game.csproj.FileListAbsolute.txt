@@ -55,3 +55,9 @@ D:\JetBrains Rider 2025.2.3\RiderProjects\Sokoban\Sokoban.Game\bin\Debug\net9.0\
 D:\JetBrains Rider 2025.2.3\RiderProjects\Sokoban\Sokoban.Game\bin\Debug\net9.0\Content\box_on_goal.xnb
 D:\JetBrains Rider 2025.2.3\RiderProjects\Sokoban\Sokoban.Game\bin\Debug\net9.0\Sokoban.Render.dll
 D:\JetBrains Rider 2025.2.3\RiderProjects\Sokoban\Sokoban.Game\bin\Debug\net9.0\Sokoban.Render.pdb
+D:\JetBrains Rider 2025.2.3\RiderProjects\Sokoban\Sokoban.Game\bin\Debug\net9.0\Content\levels\easy.txt
+D:\JetBrains Rider 2025.2.3\RiderProjects\Sokoban\Sokoban.Game\bin\Debug\net9.0\Content\levels\hard.txt
+D:\JetBrains Rider 2025.2.3\RiderProjects\Sokoban\Sokoban.Game\bin\Debug\net9.0\Content\levels\middle.txt
+D:\JetBrains Rider 2025.2.3\RiderProjects\Sokoban\Sokoban.Game\bin\Debug\net9.0\Content\SmallFont.xnb
+D:\JetBrains Rider 2025.2.3\RiderProjects\Sokoban\Sokoban.Game\bin\Debug\net9.0\Sokoban.Data.dll
+D:\JetBrains Rider 2025.2.3\RiderProjects\Sokoban\Sokoban.Game\bin\Debug\net9.0\Sokoban.Data.pdb

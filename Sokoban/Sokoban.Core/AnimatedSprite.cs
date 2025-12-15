@@ -1,7 +1,7 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace Sokoban.Game;
+namespace Sokoban.Core;
 
 public class AnimatedSprite
 {

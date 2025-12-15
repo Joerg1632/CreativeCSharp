@@ -3,6 +3,8 @@ namespace Sokoban.Core;
 public class SokobanEngine
 {
     public Level CurrentLevel { get; private set; }
+    
+    public int Steps { get; private set; }
 
     public SokobanEngine(Level level)
     {
@@ -42,6 +44,8 @@ public class SokobanEngine
         {
             MovePlayerTo(nx, ny, px, py);
         }
+        
+        Steps++;
     }
 
     public bool IsLevelCompleted()

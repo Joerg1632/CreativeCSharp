@@ -1,0 +1,52 @@
+{
+  "PlayerName": "  sdf",
+  "CompletedLevels": [
+    {
+      "Steps": 20,
+      "TimeSeconds": 10.7500105,
+      "LevelId": "biiigLevel.txt"
+    },
+    {
+      "Steps": 11,
+      "TimeSeconds": 9.250033,
+      "LevelId": "miniLevel.txt"
+    },
+    {
+      "Steps": 56,
+      "TimeSeconds": 30.49971,
+      "LevelId": "bigLevel.txt"
+    },
+    {
+      "Steps": 14,
+      "TimeSeconds": 0,
+      "LevelId": "middle.txt"
+    },
+    {
+      "Steps": 165,
+      "TimeSeconds": 0,
+      "LevelId": "hard.txt"
+    },
+    {
+      "Steps": 9,
+      "TimeSeconds": 4.6166744,
+      "LevelId": "easy.txt"
+    },
+    {
+      "Steps": 57,
+      "TimeSeconds": 29.283062,
+      "LevelId": "middle"
+    },
+    {
+      "Steps": 143,
+      "TimeSeconds": 77.31871,
+      "LevelId": "hard"
+    },
+    {
+      "Steps": 9,
+      "TimeSeconds": 6.500033,
+      "LevelId": "easy"
+    }
+  ],
+  "BestSteps": 21,
+  "BestTime": 8.883372
+}

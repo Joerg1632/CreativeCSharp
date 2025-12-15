@@ -17,6 +17,12 @@
 /processorParam:PremultiplyAlpha=True
 /build:DefaultFont.xnb
 
+#begin SmallFont.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:PremultiplyAlpha=True
+/build:SmallFont.xnb
+
 #begin floor.png
 /importer:TextureImporter
 /processor:TextureProcessor
