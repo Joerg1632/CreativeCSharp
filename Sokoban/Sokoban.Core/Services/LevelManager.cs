@@ -2,38 +2,57 @@ using Sokoban.Core.Engine;
 using Sokoban.Core.Levels;
 using Sokoban.Data;
 using Sokoban.Data.Models;
+using System.IO;
+using System.Linq;
+using System.Collections.Generic;
+using System.Globalization;
 
-namespace Sokoban.Core.Services;
-
-public class LevelManager
+namespace Sokoban.Core.Services
 {
-    private readonly PlayerService PlayerService;
-    private readonly RecordService RecordService;
-
-    public LevelManager(PlayerService playerService, RecordService recordService)
+    public class LevelManager
     {
-        PlayerService = playerService;
-        RecordService = recordService;
-    }
+        private readonly PlayerService PlayerService;
+        private readonly RecordService RecordService;
+        private readonly string LevelsFolder;
 
-    public List<LevelInfo> GetLevels() => new()
-    {
-        new LevelInfo { Id = "easy", Name = "Easy", Path = @"Content\levels\easy.txt" },
-        new LevelInfo { Id = "middle", Name = "Middle", Path = @"Content\levels\middle.txt" },
-        new LevelInfo { Id = "hard", Name = "Hard", Path = @"Content\levels\hard.txt" }
-    };
+        public LevelManager(PlayerService playerService, RecordService recordService, string levelsFolder = @"Content\levels")
+        {
+            PlayerService = playerService;
+            RecordService = recordService;
+            LevelsFolder = levelsFolder;
+        }
 
-    public (SokobanEngine engine, Level level) LoadLevel(string path)
-    {
-        var level = LevelLoader.LoadFromFile(path);
-        var engine = new SokobanEngine(level);
-        return (engine, level);
-    }
+        public List<LevelInfo> GetLevels()
+        {
+            if (!Directory.Exists(LevelsFolder))
+                return new List<LevelInfo>();
 
-    public void SaveLevelResult(string levelPath, SokobanEngine engine, float levelTime)
-    {
-        var levelId = Path.GetFileNameWithoutExtension(levelPath);
-        RecordService.TryUpdateRecord(levelId, PlayerService.Profile.PlayerName, engine.Steps, levelTime);
-        PlayerService.UpdateLevelStats(levelId, engine.Steps, levelTime);
+            var files = Directory.GetFiles(LevelsFolder, "*.txt");
+            return files.Select(f =>
+            {
+                var id = Path.GetFileNameWithoutExtension(f);
+                var name = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(id); 
+                return new LevelInfo
+                {
+                    Id = id,
+                    Name = name,
+                    Path = f
+                };
+            }).ToList();
+        }
+
+        public (SokobanEngine engine, Level level) LoadLevel(string path)
+        {
+            var level = LevelLoader.LoadFromFile(path);
+            var engine = new SokobanEngine(level);
+            return (engine, level);
+        }
+
+        public void SaveLevelResult(string levelPath, SokobanEngine engine, float levelTime)
+        {
+            var levelId = Path.GetFileNameWithoutExtension(levelPath);
+            RecordService.TryUpdateRecord(levelId, PlayerService.Profile.PlayerName, engine.Steps, levelTime);
+            PlayerService.UpdateLevelStats(levelId, engine.Steps, levelTime);
+        }
     }
 }
