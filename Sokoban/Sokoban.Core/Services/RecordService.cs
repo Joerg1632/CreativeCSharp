@@ -15,8 +15,9 @@ public class RecordService
 
     public void TryUpdateRecord(string levelId, string playerName, int steps, float time)
     {
-        if (!Records.TryGetValue(levelId, out var best) ||
-            steps < best.Steps || (steps == best.Steps && time < best.TimeSeconds))
+        if (!Records.TryGetValue(levelId, out var best) 
+            || steps < best.Steps 
+            || (steps == best.Steps && time < best.TimeSeconds))
         {
             Records[levelId] = new LevelRecord
             {

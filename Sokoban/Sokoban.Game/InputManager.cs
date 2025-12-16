@@ -1,8 +1,5 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
-using Sokoban.Core;
-using Sokoban.Data;
-using System.IO;
 using Sokoban.Core.Engine;
 
 namespace Sokoban.Game
@@ -17,8 +14,10 @@ namespace Sokoban.Game
         }
 
         public bool IsKeyPressed(Keys key, KeyboardState currentState)
-            => currentState.IsKeyDown(key) && !PreviousState.IsKeyDown(key);
-
+        {
+            return currentState.IsKeyDown(key) && !PreviousState.IsKeyDown(key);
+        }
+        
         public string HandleNameInput(KeyboardState state, string currentName)
         {
             foreach (var key in state.GetPressedKeys())
@@ -72,7 +71,11 @@ namespace Sokoban.Game
                 MovePlayer(Direction.Right, Keys.Right, engine, ref lastDirection, ref isMoving);
         }
 
-        private void MovePlayer(Direction dir, Keys key, SokobanEngine engine, ref Direction lastDirection, ref bool isMoving)
+        private void MovePlayer(Direction dir, 
+            Keys key, 
+            SokobanEngine engine, 
+            ref Direction lastDirection, 
+            ref bool isMoving)
         {
             lastDirection = dir;
             isMoving = true;

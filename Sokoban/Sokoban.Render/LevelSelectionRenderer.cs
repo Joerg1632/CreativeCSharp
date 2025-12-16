@@ -95,9 +95,9 @@ public class LevelSelectionRenderer
         for (int i = 0; i < levels.Count; i++)
         {
             var rect = new Rectangle((int)StartX, (int)(StartY + i * CardGap), CardWidth, CardHeight);
-            if (rect.Contains(mouse.Position) &&
-                mouse.LeftButton == ButtonState.Pressed &&
-                prevMouse.LeftButton == ButtonState.Released)
+            if (rect.Contains(mouse.Position) 
+                && mouse.LeftButton == ButtonState.Pressed 
+                && prevMouse.LeftButton == ButtonState.Released)
             {
                 return levels[i];
             }
@@ -189,9 +189,9 @@ public class LevelSelectionRenderer
                 lineY += Renderer.SmallFont.LineSpacing + LineSpacingExtra;
             }
 
-            if (hover &&
-                mouse.LeftButton == ButtonState.Pressed &&
-                prevMouse.LeftButton == ButtonState.Released)
+            if (hover 
+                && mouse.LeftButton == ButtonState.Pressed 
+                && prevMouse.LeftButton == ButtonState.Released)
             {
                 return level;
             }
