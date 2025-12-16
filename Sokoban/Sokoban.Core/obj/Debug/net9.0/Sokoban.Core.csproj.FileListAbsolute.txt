@@ -12,3 +12,6 @@ D:\JetBrains Rider 2025.2.3\RiderProjects\Sokoban\Sokoban.Core\obj\Debug\net9.0\
 D:\JetBrains Rider 2025.2.3\RiderProjects\Sokoban\Sokoban.Core\obj\Debug\net9.0\ref\Sokoban.Core.dll
 D:\JetBrains Rider 2025.2.3\RiderProjects\Sokoban\Sokoban.Core\obj\Debug\net9.0\mgcb.tool.restore
 D:\JetBrains Rider 2025.2.3\RiderProjects\Sokoban\Sokoban.Core\obj\Debug\net9.0\Sokoban.Core.csproj.AssemblyReference.cache
+D:\JetBrains Rider 2025.2.3\RiderProjects\Sokoban\Sokoban.Core\bin\Debug\net9.0\Sokoban.Data.dll
+D:\JetBrains Rider 2025.2.3\RiderProjects\Sokoban\Sokoban.Core\bin\Debug\net9.0\Sokoban.Data.pdb
+D:\JetBrains Rider 2025.2.3\RiderProjects\Sokoban\Sokoban.Core\obj\Debug\net9.0\Sokoban..2AA33B42.Up2Date

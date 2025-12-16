@@ -1,10 +1,9 @@
 {
   "version": 2,
-  "dgSpecHash": "E1B36lpV5eY=",
+  "dgSpecHash": "FHtOkpC5BzQ=",
   "success": true,
   "projectFilePath": "D:\\JetBrains Rider 2025.2.3\\RiderProjects\\Sokoban\\Sokoban.Data\\Sokoban.Data.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\yurav\\.nuget\\packages\\monogame.content.builder.task\\3.8.4.1\\monogame.content.builder.task.3.8.4.1.nupkg.sha512",
     "C:\\Users\\yurav\\.nuget\\packages\\monogame.framework.desktopgl\\3.8.4.1\\monogame.framework.desktopgl.3.8.4.1.nupkg.sha512",
     "C:\\Users\\yurav\\.nuget\\packages\\monogame.library.openal\\1.24.3.2\\monogame.library.openal.1.24.3.2.nupkg.sha512",
     "C:\\Users\\yurav\\.nuget\\packages\\monogame.library.sdl\\2.32.2.1\\monogame.library.sdl.2.32.2.1.nupkg.sha512",

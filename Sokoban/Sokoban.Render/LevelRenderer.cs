@@ -2,6 +2,10 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Sokoban.Core;
 using System.Collections.Generic;
+using Sokoban.Core.Engine;
+using Sokoban.Core.Levels;
+using Sokoban.Data;
+using Sokoban.Data.Enums;
 
 namespace Sokoban.Render;
 

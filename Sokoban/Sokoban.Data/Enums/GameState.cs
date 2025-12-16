@@ -1,4 +1,4 @@
-namespace Sokoban.Game;
+namespace Sokoban.Data.Enums;
 
 public enum GameState
 {

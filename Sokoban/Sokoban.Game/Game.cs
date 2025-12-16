@@ -3,8 +3,12 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Sokoban.Core;
 using Sokoban.Render;
-using Sokoban.Data;
 using System.Collections.Generic;
+using Sokoban.Core.Engine;
+using Sokoban.Core.Levels;
+using Sokoban.Core.Services;
+using Sokoban.Data.Enums;
+using Sokoban.Data.Models;
 
 namespace Sokoban.Game
 {

@@ -136,7 +136,8 @@
         "framework": ".NETCoreApp,Version=v9.0",
         "dependencies": {
           "MonoGame.Content.Builder.Task": "3.8.0",
-          "MonoGame.Framework.DesktopGL": "3.8.0"
+          "MonoGame.Framework.DesktopGL": "3.8.0",
+          "Sokoban.Data": "1.0.0"
         },
         "compile": {
           "bin/placeholder/Sokoban.Core.dll": {}
@@ -149,8 +150,7 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v9.0",
         "dependencies": {
-          "MonoGame.Framework.DesktopGL": "3.8.0",
-          "Sokoban.Core": "1.0.0"
+          "MonoGame.Framework.DesktopGL": "3.8.0"
         },
         "compile": {
           "bin/placeholder/Sokoban.Data.dll": {}
@@ -164,7 +164,8 @@
         "framework": ".NETCoreApp,Version=v9.0",
         "dependencies": {
           "MonoGame.Framework.DesktopGL": "3.8.0",
-          "Sokoban.Core": "1.0.0"
+          "Sokoban.Core": "1.0.0",
+          "Sokoban.Data": "1.0.0"
         },
         "compile": {
           "bin/placeholder/Sokoban.Render.dll": {}

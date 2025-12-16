@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework.Input;
 using Sokoban.Core;
 using Sokoban.Data;
 using System.IO;
+using Sokoban.Core.Engine;
 
 namespace Sokoban.Game
 {

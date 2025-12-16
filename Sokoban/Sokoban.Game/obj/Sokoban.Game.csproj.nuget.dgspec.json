@@ -25,7 +25,11 @@
         "frameworks": {
           "net9.0": {
             "targetAlias": "net9.0",
-            "projectReferences": {}
+            "projectReferences": {
+              "D:\\JetBrains Rider 2025.2.3\\RiderProjects\\Sokoban\\Sokoban.Data\\Sokoban.Data.csproj": {
+                "projectPath": "D:\\JetBrains Rider 2025.2.3\\RiderProjects\\Sokoban\\Sokoban.Data\\Sokoban.Data.csproj"
+              }
+            }
           }
         },
         "warningProperties": {
@@ -94,11 +98,7 @@
         "frameworks": {
           "net9.0": {
             "targetAlias": "net9.0",
-            "projectReferences": {
-              "D:\\JetBrains Rider 2025.2.3\\RiderProjects\\Sokoban\\Sokoban.Core\\Sokoban.Core.csproj": {
-                "projectPath": "D:\\JetBrains Rider 2025.2.3\\RiderProjects\\Sokoban\\Sokoban.Core\\Sokoban.Core.csproj"
-              }
-            }
+            "projectReferences": {}
           }
         },
         "warningProperties": {
@@ -245,6 +245,9 @@
             "projectReferences": {
               "D:\\JetBrains Rider 2025.2.3\\RiderProjects\\Sokoban\\Sokoban.Core\\Sokoban.Core.csproj": {
                 "projectPath": "D:\\JetBrains Rider 2025.2.3\\RiderProjects\\Sokoban\\Sokoban.Core\\Sokoban.Core.csproj"
+              },
+              "D:\\JetBrains Rider 2025.2.3\\RiderProjects\\Sokoban\\Sokoban.Data\\Sokoban.Data.csproj": {
+                "projectPath": "D:\\JetBrains Rider 2025.2.3\\RiderProjects\\Sokoban\\Sokoban.Data\\Sokoban.Data.csproj"
               }
             }
           }

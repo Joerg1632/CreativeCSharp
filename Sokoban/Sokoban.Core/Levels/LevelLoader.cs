@@ -1,4 +1,8 @@
-namespace Sokoban.Core;
+using Sokoban.Core.Levels;
+using Sokoban.Data;
+using Sokoban.Data.Enums;
+
+namespace Sokoban.Core.Levels;
 
 public static class LevelLoader
 {

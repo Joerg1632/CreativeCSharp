@@ -1,4 +1,4 @@
-namespace Sokoban.Core;
+namespace Sokoban.Core.Engine;
 
 public enum Direction
 {

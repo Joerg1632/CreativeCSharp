@@ -1,4 +1,4 @@
-namespace Sokoban.Core;
+namespace Sokoban.Data.Models;
 
 public class LevelInfo
 {

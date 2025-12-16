@@ -9,7 +9,8 @@
       "Sokoban.Render/1.0.0": {
         "dependencies": {
           "MonoGame.Framework.DesktopGL": "3.8.4.1",
-          "Sokoban.Core": "1.0.0"
+          "Sokoban.Core": "1.0.0",
+          "Sokoban.Data": "1.0.0"
         },
         "runtime": {
           "Sokoban.Render.dll": {}
@@ -124,10 +125,22 @@
       "Sokoban.Core/1.0.0": {
         "dependencies": {
           "MonoGame.Content.Builder.Task": "3.8.4.1",
-          "MonoGame.Framework.DesktopGL": "3.8.4.1"
+          "MonoGame.Framework.DesktopGL": "3.8.4.1",
+          "Sokoban.Data": "1.0.0"
         },
         "runtime": {
           "Sokoban.Core.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
+      "Sokoban.Data/1.0.0": {
+        "dependencies": {
+          "MonoGame.Framework.DesktopGL": "3.8.4.1"
+        },
+        "runtime": {
+          "Sokoban.Data.dll": {
             "assemblyVersion": "1.0.0.0",
             "fileVersion": "1.0.0.0"
           }
@@ -191,6 +204,11 @@
       "hashPath": "system.valuetuple.4.5.0.nupkg.sha512"
     },
     "Sokoban.Core/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Sokoban.Data/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

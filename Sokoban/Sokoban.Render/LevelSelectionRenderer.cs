@@ -2,6 +2,10 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Sokoban.Core;
+using Sokoban.Core.Levels;
+using Sokoban.Data;
+using Sokoban.Data.Enums;
+using Sokoban.Data.Models;
 
 namespace Sokoban.Render;
 
@@ -104,7 +108,7 @@ public class LevelSelectionRenderer
     public LevelInfo DrawLevelSelection(
         List<LevelInfo> levels,
         PlayerProfile profile,
-        Dictionary<string, LevelRecord> records,
+        IReadOnlyDictionary<string, LevelRecord> records,
         MouseState mouse,
         MouseState prevMouse)
     {

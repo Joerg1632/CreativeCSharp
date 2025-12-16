@@ -12,6 +12,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Sokoban.Core\Sokoban.Core.csproj" />
+    <ProjectReference Include="..\Sokoban.Data\Sokoban.Data.csproj" />
   </ItemGroup>
 
 </Project>

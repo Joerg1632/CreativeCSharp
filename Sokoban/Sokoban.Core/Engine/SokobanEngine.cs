@@ -1,4 +1,8 @@
-namespace Sokoban.Core;
+using Sokoban.Core.Levels;
+using Sokoban.Data;
+using Sokoban.Data.Enums;
+
+namespace Sokoban.Core.Engine;
 
 public class SokobanEngine
 {
@@ -74,8 +78,7 @@ public class SokobanEngine
     {
         return x >= 0 && x < CurrentLevel.Width && y >= 0 && y < CurrentLevel.Height;
     }
-        
-
+    
     private void MovePlayerTo(int nx, int ny, int px, int py)
     {
         CurrentLevel.Map[ny, nx] = TileType.Player;

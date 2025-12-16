@@ -1,6 +1,7 @@
-using Sokoban.Core;
+using Sokoban.Data;
+using Sokoban.Data.Models;
 
-namespace Sokoban.Data;
+namespace Sokoban.Core.Services;
 
 public class PlayerService
 {
@@ -8,15 +9,10 @@ public class PlayerService
 
     public PlayerService()
     {
-        Profile = SaveService.Load() ?? new PlayerProfile();
+        Profile = ProfileService.Load();
     }
 
-    public void Save() => SaveService.Save(Profile);
-
-    public LevelStats GetLevelStats(string levelId)
-    {
-        return Profile.CompletedLevels.FirstOrDefault(l => l.LevelId == levelId);
-    }
+    public void Save() => ProfileService.Save(Profile);
     
     public void UpdateLevelStats(string levelId, int steps, float time)
     {

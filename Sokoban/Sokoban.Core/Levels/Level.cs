@@ -1,4 +1,7 @@
-namespace Sokoban.Core;
+using Sokoban.Data;
+using Sokoban.Data.Enums;
+
+namespace Sokoban.Core.Levels;
 
 public class Level
 {

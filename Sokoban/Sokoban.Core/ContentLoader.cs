@@ -1,10 +1,10 @@
-﻿using Microsoft.Xna.Framework;        
-using Microsoft.Xna.Framework.Content; 
-using Microsoft.Xna.Framework.Graphics; 
-using Sokoban.Core;                     
-using System.Collections.Generic;
+﻿using Microsoft.Xna.Framework.Content; 
+using Microsoft.Xna.Framework.Graphics;
+using Sokoban.Core.Engine;
+using Sokoban.Data;
+using Sokoban.Data.Enums;
 
-namespace Sokoban.Data;
+namespace Sokoban.Core;
 
 public class ContentLoader
 {

@@ -14,3 +14,5 @@ D:\JetBrains Rider 2025.2.3\RiderProjects\Sokoban\Sokoban.Render\obj\Debug\net9.
 D:\JetBrains Rider 2025.2.3\RiderProjects\Sokoban\Sokoban.Render\obj\Debug\net9.0\refint\Sokoban.Render.dll
 D:\JetBrains Rider 2025.2.3\RiderProjects\Sokoban\Sokoban.Render\obj\Debug\net9.0\Sokoban.Render.pdb
 D:\JetBrains Rider 2025.2.3\RiderProjects\Sokoban\Sokoban.Render\obj\Debug\net9.0\ref\Sokoban.Render.dll
+D:\JetBrains Rider 2025.2.3\RiderProjects\Sokoban\Sokoban.Render\bin\Debug\net9.0\Sokoban.Data.dll
+D:\JetBrains Rider 2025.2.3\RiderProjects\Sokoban\Sokoban.Render\bin\Debug\net9.0\Sokoban.Data.pdb

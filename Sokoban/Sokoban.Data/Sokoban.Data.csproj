@@ -10,9 +10,6 @@
     <PackageReference Include="MonoGame.Framework.DesktopGL" Version="3.8.*" />
   </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\Sokoban.Core\Sokoban.Core.csproj" />
-  </ItemGroup>
 
 
 </Project>

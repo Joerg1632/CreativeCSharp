@@ -127,7 +127,8 @@
       "Sokoban.Core/1.0.0": {
         "dependencies": {
           "MonoGame.Content.Builder.Task": "3.8.4.1",
-          "MonoGame.Framework.DesktopGL": "3.8.4.1"
+          "MonoGame.Framework.DesktopGL": "3.8.4.1",
+          "Sokoban.Data": "1.0.0"
         },
         "runtime": {
           "Sokoban.Core.dll": {
@@ -138,8 +139,7 @@
       },
       "Sokoban.Data/1.0.0": {
         "dependencies": {
-          "MonoGame.Framework.DesktopGL": "3.8.4.1",
-          "Sokoban.Core": "1.0.0"
+          "MonoGame.Framework.DesktopGL": "3.8.4.1"
         },
         "runtime": {
           "Sokoban.Data.dll": {
@@ -151,7 +151,8 @@
       "Sokoban.Render/1.0.0": {
         "dependencies": {
           "MonoGame.Framework.DesktopGL": "3.8.4.1",
-          "Sokoban.Core": "1.0.0"
+          "Sokoban.Core": "1.0.0",
+          "Sokoban.Data": "1.0.0"
         },
         "runtime": {
           "Sokoban.Render.dll": {

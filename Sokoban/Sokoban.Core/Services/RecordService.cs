@@ -1,21 +1,18 @@
-using Sokoban.Core;
+using Sokoban.Data;
+using Sokoban.Data.Models;
 
-namespace Sokoban.Data;
+namespace Sokoban.Core.Services;
 
 public class RecordService
 {
+    private const string FilePath = "records.json";
     private Dictionary<string, LevelRecord> Records;
 
     public RecordService()
     {
-        Records = RecordsService.Load();
+        Records = JsonStorage.Load<Dictionary<string, LevelRecord>>(FilePath);
     }
 
-    public LevelRecord GetBestRecord(string levelId)
-    {
-        return Records.TryGetValue(levelId, out var record) ? record : null;
-    }
-    
     public void TryUpdateRecord(string levelId, string playerName, int steps, float time)
     {
         if (!Records.TryGetValue(levelId, out var best) ||
@@ -28,9 +25,10 @@ public class RecordService
                 Steps = steps,
                 TimeSeconds = time
             };
-            RecordsService.Save(Records);
+
+            JsonStorage.Save(FilePath, Records);
         }
     }
 
-    public Dictionary<string, LevelRecord> GetAll() => Records;
+    public IReadOnlyDictionary<string, LevelRecord> GetAll() => Records;
 }
